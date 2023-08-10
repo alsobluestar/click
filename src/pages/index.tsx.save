@@ -7,17 +7,28 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
 
-useEffect(() => {
-    const url = "/api/click";
-    fetch(url, {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(data => setData(data));
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = '/api/click';
+      const response = await fetch(url, {
+        method: 'GET',
+      });
+      const newData = await response.json();
+      setData(newData);
+    };
+
+   
+
+   const pollingInterval = setInterval(() => {
+      fetchData();
+    }, 2000);
+
+    return () => {
+      clearInterval(pollingInterval);
+    };
   }, []);
-
-                                                                                 
-
 
 
 
