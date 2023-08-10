@@ -1,7 +1,4 @@
-# Create T3 App
-
-
-## Click
+# Click
 
 I made this with T3 stack
 
