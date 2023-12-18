@@ -1,7 +1,7 @@
 import { createClient } from 'redis';
 
 export default async function handler(req, res) {
-  const client = createClient(process.env.REDIS_CONNECTION_STRING);
+  const client = createClient("redis://localhost:6379");
 
   if (req.method === 'GET') {
     try {
